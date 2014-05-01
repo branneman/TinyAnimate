@@ -2,7 +2,7 @@
 Animation micro library. Vanilla JavaScript. Include only what you need, can be uglified to only 330 bytes. Uses
 `requestAnimationFrame()` if available, falls back to `setTimeout()`.
 
-## [Download](/branneman/TinyAnimate/releases)
+## [Download](https://github.com/branneman/TinyAnimate/releases)
 
 ## Usage
 
