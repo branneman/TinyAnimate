@@ -39,9 +39,9 @@ It's also possible to specify the easing as a function. Read more about creating
 It uses the unprefixed version of `requestAnimationFrame`, if available. You can however include a polyfill as well, if
 you need to support more browsers. See [caniuse.com/requestanimationframe](http://caniuse.com/requestanimationframe) for
 more detailed browser support, everthing that needs a prefix will only use `requestAnimationFrame` whenever a polyfill
-is found. If `window.requestAnimationFrame` is not found, `setTimeout()` will be used.
+has been included. If `window.requestAnimationFrame` is not found, `setTimeout()` will be used.
 
-A polyfill for `requestAnimationFrame` is included in the project, but you are **not required** to use it.
+A polyfill for `requestAnimationFrame` is included in the project, but you are **not required** to use it. Choose wisely.
 
 ## Examples
 ### Animating a CSS style:
