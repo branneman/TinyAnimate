@@ -45,12 +45,17 @@ A polyfill for `requestAnimationFrame` is included in the project, but you are *
 
 ### Examples
 #### Animating a CSS style:
-    var square = document.querySelector('.square');
-    TinyAnimate.animateCSS(square, 'marginLeft', 'px', 10, 70, 500, 'easeInOutQuart', function() {
-        console.log('done!!!111oneone');
-    });
+```javascript
+var square = document.querySelector('.square');
+TinyAnimate.animateCSS(square, 'marginLeft', 'px', 10, 70, 500, 'easeInOutQuart', function() {
+    console.log('done!!!111oneone');
+});
+```
+
 #### Animating the 'x' property on an SVG element:
-    var square = document.querySelector('.square');
-    TinyAnimate.animate(70, 10, 1000, function(x) {
-        square.setAttribute('x', x);
-    });
+```javascript
+var square = document.querySelector('.square');
+TinyAnimate.animate(70, 10, 1000, function(x) {
+    square.setAttribute('x', x);
+});
+```
