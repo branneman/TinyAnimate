@@ -1,0 +1,92 @@
+<!doctype html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>TinyAnimate Test Suite</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <style>
+            body {
+                font: 18px/1.2 Georgia, 'Times New Roman', Times, serif;
+            }
+            .wrapper {
+                max-width: 45em;
+                margin: 0 auto;
+            }
+            .test-unit {
+                padding-bottom: 1em;
+                border-bottom: 2px solid lightgrey;
+            }
+            .test-unit:first-child {
+                margin-top: 2em;
+                border-top: 2px solid lightgrey;
+            }
+            .test-unit button {
+                display: block;
+                margin: 1em 0;
+            }
+        </style>
+
+        <script src="/src/requestAnimationFrame.js"></script>
+        <script src="/src/TinyAnimate.js"></script>
+        <script src="/src/TinyAnimate.easings.js"></script>
+    </head>
+    <body>
+
+        <div class="wrapper">
+            <h1>TinyAnimate Test Suite</h1>
+            <p>Click all the <strong>Run</strong> buttons and see if the boxes animate in all the browsers.</p>
+
+            <div class="test-suite">
+
+                <div id="test-1" class="test-unit">
+                    <h2>Will test whether <code>animate()</code> works without the optional parameters</h2>
+                    <p>This test animates an SVG <code>&lt;rect&gt;</code> element. Easing is linear. Animation should take 500ms.</p>
+                    <svg width="100" height="30">
+                        <rect x="0" y="0" width="30" height="30" fill="crimson" />
+                    </svg>
+                    <button>Run</button>
+                    <script>
+                        (function() {
+                            var rect = document.querySelector('#test-1 rect');
+                            var btn  = document.querySelector('#test-1 button');
+                            btn.addEventListener('click', function() {
+                                var update = function(x) {
+                                    rect.setAttribute('x', x);
+                                };
+                                TinyAnimate.animate(0, 70, 500, update);
+                            });
+                        }());
+                    </script>
+                </div>
+
+                <div id="test-2" class="test-unit">
+                    <h2>Will test whether <code>animateCSS()</code> works without the optional parameters</h2>
+                    <p>Easing should be linear. Animation should take 750ms.</p>
+                    <div></div>
+                    <button>Run</button>
+                    <style>
+                        #test-2 div {
+                            width: 30px;
+                            height: 30px;
+                            background: crimson;
+                        }
+                    </style>
+                    <script>
+                        (function() {
+                            var div = document.querySelector('#test-2 div');
+                            var btn = document.querySelector('#test-2 button');
+                            btn.addEventListener('click', function() {
+                                TinyAnimate.animateCSS(div, 'marginLeft', 'px', 0, 70, 750);
+                            });
+                        }());
+                    </script>
+                </div>
+
+            </div>
+        </div>
+
+    </body>
+</html>
