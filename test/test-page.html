@@ -53,10 +53,9 @@
                             var rect = document.querySelector('#test-1 rect');
                             var btn  = document.querySelector('#test-1 button');
                             btn.addEventListener('click', function() {
-                                var update = function(x) {
+                                TinyAnimate.animate(0, 70, 500, function(x) {
                                     rect.setAttribute('x', x);
-                                };
-                                TinyAnimate.animate(0, 70, 500, update);
+                                });
                             });
                         }());
                     </script>
@@ -80,6 +79,61 @@
                             var btn = document.querySelector('#test-2 button');
                             btn.addEventListener('click', function() {
                                 TinyAnimate.animateCSS(div, 'marginLeft', 'px', 0, 70, 750);
+                            });
+                        }());
+                    </script>
+                </div>
+
+                <div id="test-3" class="test-unit">
+                    <h2>Will test all the easings</h2>
+                    <p>All easings should pass along. All animations should take 1s, a 250ms should to reset, and then
+                        250ms pause to the next animation.</p>
+                    <div></div>
+                    <p>Current easing: <span class="easing">none</span></p>
+                    <button>Run</button>
+                    <style>
+                        #test-3 div {
+                            width: 30px;
+                            height: 30px;
+                            background: crimson;
+                        }
+                    </style>
+                    <script>
+                        (function() {
+                            var div = document.querySelector('#test-3 div');
+                            var btn = document.querySelector('#test-3 button');
+                            var easingSpan = document.querySelector('#test-3 .easing');
+
+                            btn.addEventListener('click', function() {
+
+                                var i = 0;
+                                for (var easing in TinyAnimate.easings) {
+                                    if (!TinyAnimate.easings.hasOwnProperty(easing)) continue;
+
+                                    setTimeout((function(easing) {
+
+                                        return function() {
+
+                                            // Fire animation
+                                            TinyAnimate.animateCSS(div, 'marginLeft', 'px', 0, 70, 1000, easing);
+
+                                            // Set label with 'current easing'
+                                            easingSpan.innerHTML = easing;
+
+                                            // Reset when done
+                                            setTimeout(function() {
+                                                div.style.marginLeft = 0;
+                                            }, 1250);
+                                        };
+
+                                    }(easing)), 1500 * i);
+
+                                    i++;
+                                }
+
+                                setTimeout(function() {
+                                    easingSpan.innerHTML = 'none';
+                                }, i * 1500);
                             });
                         }());
                     </script>
