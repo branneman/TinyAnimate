@@ -3,6 +3,7 @@ var path = require('path');
 var express = require('express');
 
 var app = express();
+app.use('/bin', express.static(path.resolve(__dirname, '../bin/')));
 app.use('/src', express.static(path.resolve(__dirname, '../src/')));
 app.get('/', function(req, res) {
     var html = fs.createReadStream(__dirname + '/test-page.html');
