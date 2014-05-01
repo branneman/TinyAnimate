@@ -1,0 +1,21 @@
+{
+  "name": "TinyAnimate",
+  "version": "0.1.0",
+  "description": "Animation microlib. Vanilla JavaScript. Uses `requestAnimationFrame()` if available, falls back to `setTimeout()`.",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/branneman/TinyAnimate.git"
+  },
+  "author": "Bran van der Meer <branmovic@gmail.com> (http://bran.name/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/branneman/TinyAnimate/issues"
+  },
+  "homepage": "https://github.com/branneman/TinyAnimate",
+  "devDependencies": {
+    "express": "^4.1.1"
+  }
+}
