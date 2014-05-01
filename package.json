@@ -16,6 +16,8 @@
   },
   "homepage": "https://github.com/branneman/TinyAnimate",
   "devDependencies": {
-    "express": "^4.1.1"
+    "express": "^4.1.1",
+    "gulp": "^3.6.2",
+    "gulp-uglify": "^0.2.1"
   }
 }
