@@ -4,7 +4,25 @@ Animation micro library. Vanilla JavaScript. Include only what you need, can be 
 
 Supports all the easings you can find on **[easings.net](http://easings.net/)**, and **custom easing functions**.
 
-## [Download](https://github.com/branneman/TinyAnimate/releases)
+#### [Download](https://github.com/branneman/TinyAnimate/releases)
+
+## Examples
+### Animating a CSS style:
+```javascript
+var square = document.querySelector('.square');
+TinyAnimate.animateCSS(square, 'marginLeft', 'px', 10, 70, 500, 'easeInOutQuart', function() {
+    console.log('done!!!111oneone');
+});
+```
+
+### Animating the 'x' property on an SVG element:
+```javascript
+var square = document.querySelector('.square');
+TinyAnimate.animate(70, 10, 1000, function(x) {
+    square.setAttribute('x', x);
+});
+```
+
 
 ## Usage
 
@@ -44,20 +62,3 @@ more detailed browser support, everthing that needs a prefix will only use `requ
 has been included. If `window.requestAnimationFrame` is not found, `setTimeout()` will be used.
 
 A polyfill for `requestAnimationFrame` is included in the project, but you are **not required** to use it. Choose wisely.
-
-## Examples
-### Animating a CSS style:
-```javascript
-var square = document.querySelector('.square');
-TinyAnimate.animateCSS(square, 'marginLeft', 'px', 10, 70, 500, 'easeInOutQuart', function() {
-    console.log('done!!!111oneone');
-});
-```
-
-### Animating the 'x' property on an SVG element:
-```javascript
-var square = document.querySelector('.square');
-TinyAnimate.animate(70, 10, 1000, function(x) {
-    square.setAttribute('x', x);
-});
-```
