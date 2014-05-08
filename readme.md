@@ -1,6 +1,5 @@
 # TinyAnimate
-Animation micro library. Vanilla JavaScript, includes a global and UMD. Minified to only 3.8kb.
-Uses `requestAnimationFrame()` if available, falls back to `setTimeout()`.
+Animation micro library. Vanilla JavaScript, includes a global and [UMD](https://github.com/umdjs/umd). Minified to only 3.8kb. Uses `requestAnimationFrame()` if available, falls back to `setTimeout()`.
 
 Supports all the easings you can find on **[easings.net](http://easings.net/)**, and **custom easing functions**.
 
