@@ -32,7 +32,7 @@ TinyAnimate.animate(70, 10, 1000, function(x) {
     - `to` (int) — Property value to animate to
     - `duration` (int) — Duration in milliseconds
     - `update` (function) — Function to implement updating the DOM, get's called with a value between `from` and `to`
-    - `easing` (string | function) — Optional: A string when the easing function is available in `window.TinyAnimate.easings`, or a function with the signature: `function(t, b, c, d) {...}`
+    - `easing` (string | function) — Optional: A string when the easing function is available in `TinyAnimate.easings`, or a function with the signature: `function(t, b, c, d) {...}`
     - `done` (function) — Optional: To be executed when the animation has completed.
 2. `TinyAnimate.animateCSS(element, property, unit, from, to, duration, easing, done)`
     - `element` (HTMLElement) — A dom node
@@ -41,7 +41,7 @@ TinyAnimate.animate(70, 10, 1000, function(x) {
     - `from` (int) — Property value to animate from
     - `to` (int) — Property value to animate to
     - `duration` (int) — Duration in milliseconds
-    - `easing` (string | function) — Optional: A string when the easing function is available in `window.TinyAnimate.easings`, or a function with the signature: `function(t, b, c, d) {...}`
+    - `easing` (string | function) — Optional: A string when the easing function is available in `TinyAnimate.easings`, or a function with the signature: `function(t, b, c, d) {...}`
     - `done` (function) — Optional: To be executed when the animation has completed.
 
 ### Easings
