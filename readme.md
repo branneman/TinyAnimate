@@ -6,6 +6,7 @@ Supports all the easings you can find on **[easings.net](http://easings.net/)**,
 #### [Download](https://github.com/branneman/TinyAnimate/releases)
 
 ## Examples
+
 ### Animating a CSS style:
 ```javascript
 var square = document.querySelector('.square');
@@ -22,6 +23,17 @@ TinyAnimate.animate(70, 10, 1000, function(x) {
 });
 ```
 
+### Using Require.js, changing the opacity of a rgba color:
+```javascript
+define(['TinyAnimate'], function(TinyAnimate) {
+    var elem = document.querySelector('button.send');
+    elem.addEventListener('click', function(e) {
+        TinyAnimate.animate(1, .5, 500, function(opacity) {
+            square.style.backgroundColor = 'rgba(65, 131, 196, ' + opacity + ')';
+        });
+    });
+});
+```
 
 ## Usage
 
@@ -44,11 +56,9 @@ TinyAnimate.animate(70, 10, 1000, function(x) {
     - `done` (function) — Optional: To be executed when the animation has completed.
 
 ### Easings
-To stay small, the TinyAnimate microlib works without easings. We encourage you to ship it with only the easing
-functions you actually use in your project. All the easings found at [easings.net](http://easings.net/) are implemented
-in the file `TinyAnimate.easings.js`, which you can optionally include in your project. I suggest you strip out all the
-easings you do not use in production to keep the bytes down. If you specify an incorrect easing or forgot to include the
-easings file, a linear easing will be used.
+All the easings found at [easings.net](http://easings.net/) are supported. I suggest you strip out all the easings you
+do not use in production to keep the bytes down. If you don't specify an easing, or specify an incorrect easing, the
+default linear easing will be used.
 
 It's also possible to specify the easing as a function. Read more about creating easing functions manually
 [here](http://upshots.org/actionscript/jsas-understanding-easing) and
