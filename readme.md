@@ -1,6 +1,5 @@
 # TinyAnimate
-Animation micro library. Vanilla JavaScript. Include only what you need, can be uglified to only 692 bytes. Uses
-`requestAnimationFrame()` if available, falls back to `setTimeout()`.
+Animation micro library. Vanilla JavaScript. Minified 3.8kb. Uses `requestAnimationFrame()` if available, falls back to `setTimeout()`.
 
 Supports all the easings you can find on **[easings.net](http://easings.net/)**, and **custom easing functions**.
 
