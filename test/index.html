@@ -29,9 +29,9 @@
             }
         </style>
 
-        <script src="/bin/requestAnimationFrame.js"></script>
-        <script src="/bin/TinyAnimate.js"></script>
-        <script src="/bin/TinyAnimate.easings.js"></script>
+        <script src="/js/src/requestAnimationFrame.js"></script>
+        <script data-main="js/tests" src="/js/vendor/require-2.1.11.js"></script>
+        <script>window.tests = {};</script>
     </head>
     <body>
 
@@ -42,7 +42,7 @@
             <div class="test-suite">
 
                 <div id="test-1" class="test-unit">
-                    <h2>Will test whether <code>animate()</code> works without the optional parameters</h2>
+                    <h2>1. Will test whether <code>animate()</code> works without the optional parameters</h2>
                     <p>This test animates an SVG <code>&lt;rect&gt;</code> element. Easing is linear. Animation should take 500ms.</p>
                     <svg width="100" height="30">
                         <rect x="0" y="0" width="30" height="30" fill="crimson" />
@@ -51,18 +51,17 @@
                     <script>
                         (function() {
                             var rect = document.querySelector('#test-1 rect');
-                            var btn  = document.querySelector('#test-1 button');
-                            btn.addEventListener('click', function() {
+                            window.tests['test-1'] = function(TinyAnimate) {
                                 TinyAnimate.animate(0, 70, 500, function(x) {
                                     rect.setAttribute('x', x);
                                 });
-                            });
+                            };
                         }());
                     </script>
                 </div>
 
                 <div id="test-2" class="test-unit">
-                    <h2>Will test whether <code>animateCSS()</code> works without the optional parameters</h2>
+                    <h2>2. Will test whether <code>animateCSS()</code> works without the optional parameters</h2>
                     <p>Easing should be linear. Animation should take 750ms.</p>
                     <div></div>
                     <button>Run</button>
@@ -76,19 +75,17 @@
                     <script>
                         (function() {
                             var div = document.querySelector('#test-2 div');
-                            var btn = document.querySelector('#test-2 button');
-                            btn.addEventListener('click', function() {
+                            window.tests['test-2'] = function(TinyAnimate) {
                                 TinyAnimate.animateCSS(div, 'marginLeft', 'px', 0, 70, 750);
-                            });
+                            };
                         }());
                     </script>
                 </div>
 
                 <div id="test-3" class="test-unit">
-                    <h2>Will test all the easings</h2>
-                    <p>All easings should pass along. All animations should take 1s, and then 500ms pause to the next animation.</p>
+                    <h2>3. Will test whether <code>done()</code> function gets called when completed</h2>
+                    <p>Easing should be easeInOutExpo. Animation should take 750ms. Box should turn green when done.</p>
                     <div></div>
-                    <p>Current easing: <span class="easing">none</span></p>
                     <button>Run</button>
                     <style>
                         #test-3 div {
@@ -100,10 +97,35 @@
                     <script>
                         (function() {
                             var div = document.querySelector('#test-3 div');
-                            var btn = document.querySelector('#test-3 button');
-                            var easingSpan = document.querySelector('#test-3 .easing');
+                            window.tests['test-3'] = function(TinyAnimate) {
+                                div.style.background = 'crimson';
+                                TinyAnimate.animateCSS(div, 'marginLeft', 'px', 0, 70, 750, 'easeInOutExpo', function() {
+                                    div.style.background = 'green';
+                                });
+                            };
+                        }());
+                    </script>
+                </div>
 
-                            btn.addEventListener('click', function() {
+                <div id="test-4" class="test-unit">
+                    <h2>4. Will test all the easings</h2>
+                    <p>All easings should pass along. All animations should take 1s, and then 500ms pause to the next animation.</p>
+                    <div></div>
+                    <p>Current easing: <span class="easing">none</span></p>
+                    <button>Run</button>
+                    <style>
+                        #test-4 div {
+                            width: 30px;
+                            height: 30px;
+                            background: crimson;
+                        }
+                    </style>
+                    <script>
+                        (function() {
+                            var div = document.querySelector('#test-4 div');
+                            var easingSpan = document.querySelector('#test-4 .easing');
+
+                            window.tests['test-4'] = function(TinyAnimate) {
 
                                 var i = 0;
                                 for (var easing in TinyAnimate.easings) {
@@ -133,7 +155,31 @@
                                 setTimeout(function() {
                                     easingSpan.innerHTML = 'none';
                                 }, i * 1500);
-                            });
+                            };
+                        }());
+                    </script>
+                </div>
+
+                <div id="test-5" class="test-unit">
+                    <h2>5. Will test whether the global <code>window.TinyAnimate</code> is there</h2>
+                    <p>Easing should be easeInOutElastic. Animation should take 750ms.</p>
+                    <div></div>
+                    <button>Run</button>
+                    <style>
+                        #test-5 div {
+                            width: 30px;
+                            height: 30px;
+                            background: crimson;
+                        }
+                    </style>
+                    <script>
+                        (function() {
+                            var div = document.querySelector('#test-5 div');
+                            window.tests['test-5'] = function(TinyAnimate) {
+                                if (window.TinyAnimate.animate    === TinyAnimate.animate && window.TinyAnimate.animateCSS === TinyAnimate.animateCSS) {
+                                        window.TinyAnimate.animateCSS(div, 'marginLeft', 'px', 0, 70, 750, 'easeInOutElastic');
+                                }
+                            };
                         }());
                     </script>
                 </div>
