@@ -176,9 +176,42 @@
                         (function() {
                             var div = document.querySelector('#test-5 div');
                             window.tests['test-5'] = function(TinyAnimate) {
-                                if (window.TinyAnimate.animate    === TinyAnimate.animate && window.TinyAnimate.animateCSS === TinyAnimate.animateCSS) {
-                                        window.TinyAnimate.animateCSS(div, 'marginLeft', 'px', 0, 70, 750, 'easeInOutElastic');
+                                if (window.TinyAnimate.animate === TinyAnimate.animate && window.TinyAnimate.animateCSS === TinyAnimate.animateCSS) {
+                                    window.TinyAnimate.animateCSS(div, 'marginLeft', 'px', 0, 70, 750, 'easeInOutElastic');
                                 }
+                            };
+                        }());
+                    </script>
+                </div>
+
+                <div id="test-6" class="test-unit">
+                    <h2>6. Will test whether animating to a negative value will work</h2>
+                    <p>Easing should be linear. Initial animation should take 500ms, secondary animation 250ms.</p>
+                    <div>Status: idle</div>
+                    <button>Run</button>
+                    <style>
+                        #test-6 div {
+                            display: inline-block;
+                            padding: .5em 1em;
+                            border-radius: .5em;
+                            background-color: rgb(65, 131, 196);
+                            color: #fff;
+                        }
+                    </style>
+                    <script>
+                        (function() {
+                            var div = document.querySelector('#test-6 div');
+                            window.tests['test-6'] = function(TinyAnimate) {
+                                div.innerHTML = 'Status: running...';
+                                TinyAnimate.animate(1, .5, 500, function(opacity) {
+                                    div.style.backgroundColor = 'rgba(65, 131, 196, ' + opacity + ')';
+                                });
+                                setTimeout(function() {
+                                    div.innerHTML = 'Status: done!';
+                                    TinyAnimate.animate(.5, 1, 250, function(opacity) {
+                                        div.style.backgroundColor = 'rgba(65, 131, 196, ' + opacity + ')';
+                                    });
+                                }, 2000);
                             };
                         }());
                     </script>
