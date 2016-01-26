@@ -50,7 +50,7 @@
             typeof to !== 'number' ||
             typeof duration !== 'number' ||
             typeof update !== 'function')
-                return;
+            return;
 
         // Determine easing
         if (typeof easing === 'string' && easings[easing]) {
@@ -67,13 +67,13 @@
 
         // Pick implementation (requestAnimationFrame | setTimeout)
         var rAF = window.requestAnimationFrame || function(callback) {
-            window.setTimeout(callback, 1000 / 60);
-        };
+                window.setTimeout(callback, 1000 / 60);
+            };
 
         // Animation loop
         var change = to - from;
-        function loop() {
-            var time = +new Date() - start;
+        function loop(timestamp) {
+            var time = (timestamp || +new Date()) - start;
             update(easing(time, from, change, duration));
             if (time >= duration) {
                 update(to);
@@ -85,7 +85,8 @@
         update(from);
 
         // Start animation loop
-        var start = +new Date();
+        var start = window.performance && window.performance.now ? window.performance.now() : +new Date();
+
         rAF(loop);
     };
 
