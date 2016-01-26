@@ -1,6 +1,6 @@
 /**
  * TinyAnimate
- *  version 0.2.0
+ *  version 0.3.0
  *
  * Source:  https://github.com/branneman/TinyAnimate
  * Author:  Bran van der Meer <branmovic@gmail.com> (http://bran.name/)
@@ -67,8 +67,8 @@
 
         // Pick implementation (requestAnimationFrame | setTimeout)
         var rAF = window.requestAnimationFrame || function(callback) {
-                window.setTimeout(callback, 1000 / 60);
-            };
+            window.setTimeout(callback, 1000 / 60);
+        };
 
         // Animation loop
         var change = to - from;
