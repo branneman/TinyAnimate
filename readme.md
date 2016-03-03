@@ -71,3 +71,6 @@ more detailed browser support, everthing that needs a prefix will only use `requ
 has been included. If `window.requestAnimationFrame` is not found, `setTimeout()` will be used.
 
 A polyfill for `requestAnimationFrame` is included in the project, but you are **not required** to use it. Choose wisely.
+
+## License
+Released under the [MIT license](http://github.com/branneman/TinyAnimate/blob/master/).
