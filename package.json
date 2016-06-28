@@ -5,6 +5,7 @@
   "directories": {
     "test": "test"
   },
+  "main": "src/TinyAnimate.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/branneman/TinyAnimate.git"
