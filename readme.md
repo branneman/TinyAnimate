@@ -3,7 +3,7 @@ Animation micro library. Vanilla JavaScript, includes a global and [UMD](https:/
 
 Supports all the easings you can find on **[easings.net](http://easings.net/)**, and **custom easing functions**.
 
-#### [Download](https://github.com/branneman/TinyAnimate/releases)
+#### [Download ZIP](https://github.com/branneman/TinyAnimate/releases) | [![npm version](https://badge.fury.io/js/TinyAnimate.svg)](https://www.npmjs.org/package/TinyAnimate)
 
 ## Examples
 
