@@ -1,6 +1,6 @@
 {
   "name": "TinyAnimate",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Animation microlib. Vanilla JavaScript. Uses `requestAnimationFrame()` if available, falls back to `setTimeout()`.",
   "directories": {
     "test": "test"
@@ -12,7 +12,8 @@
   },
   "author": "Bran van der Meer <branmovic@gmail.com> (http://bran.name/)",
   "contributors": [
-    "Wouter Kroes <wkroes@mirabeau.nl> (http://www.mirabeau.nl/)"
+    "Wouter Kroes <wkroes@mirabeau.nl> (http://www.mirabeau.nl/)",
+    "Dan White <danbrianwhite@gmail.com> (http://www.danbrianwhite.com/)"
   ],
   "license": "MIT",
   "bugs": {
