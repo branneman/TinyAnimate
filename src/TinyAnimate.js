@@ -74,8 +74,10 @@
         var change = to - from;
         function loop(timestamp) {
             var time = (timestamp || +new Date()) - start;
-            update(easing(time, from, change, duration));
-            if (time >= duration) {
+            if (time >= 0) {
+                update(easing(time, from, change, duration));
+            }
+            if (time >= 0 && time >= duration) {
                 update(to);
                 done();
             } else {
