@@ -123,7 +123,7 @@
      *  Method for canceling animations
      */
     exports.cancel = function(animation) {
-        if(!animation) {
+        if (!animation) {
             return;
         }
         animation.cancel();
