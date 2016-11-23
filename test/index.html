@@ -217,6 +217,31 @@
                     </script>
                 </div>
 
+                <div id="test-7" class="test-unit">
+                    <h2>7. Will test whether an animate can be cancelled</h2>
+                    <p>Easing should be linear. Animation should take 500ms to travel 100px, then stop.</p>
+                    <div></div>
+                    <button>Run</button>
+                    <style>
+                        #test-7 div {
+                            width: 30px;
+                            height: 30px;
+                            background: crimson;
+                        }
+                    </style>
+                    <script>
+                        (function() {
+                            var div = document.querySelector('#test-7 div');
+                            window.tests['test-7'] = function(TinyAnimate) {
+                                var animation = TinyAnimate.animateCSS(div, 'marginLeft', 'px', 0, 200, 1000);
+                                setTimeout(function() {
+                                    animation.cancel();
+                                }, 500);
+                            };
+                        }());
+                    </script>
+                </div>
+
             </div>
         </div>
 

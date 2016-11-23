@@ -9,6 +9,7 @@
  * Functions:
  *  TinyAnimate.animate(from, to, duration, update, easing, done)
  *  TinyAnimate.animateCSS(element, property, unit, from, to, duration, easing, done)
+ *  TinyAnimate.cancel(animation)
  *
  * Parameters:
  *  element   HTMLElement        A dom node
@@ -21,6 +22,9 @@
  *  easing    string | function  Optional: A string when the easing function is available in TinyAnimate.easings,
  *                                or a function with the signature: function(t, b, c, d) {...}
  *  done      function           Optional: To be executed when the animation has completed.
+ *
+ * Returns:
+ *  animation object             Animation object that can be canceled.
  */
 
 /**
@@ -71,8 +75,12 @@
         };
 
         // Animation loop
+        var canceled = false;
         var change = to - from;
         function loop(timestamp) {
+            if (canceled) {
+                return;
+            }
             var time = (timestamp || +new Date()) - start;
             if (time >= 0) {
                 update(easing(time, from, change, duration));
@@ -90,6 +98,12 @@
         var start = window.performance && window.performance.now ? window.performance.now() : +new Date();
 
         rAF(loop);
+
+        return {
+            cancel: function() {
+                canceled = true;
+            }
+        };
     };
 
     /**
@@ -101,7 +115,18 @@
         var update = function(value) {
             element.style[property] = value + unit;
         };
-        exports.animate(from, to, duration, update, easing, done);
+        return exports.animate(from, to, duration, update, easing, done);
+    };
+
+    /**
+     * TinyAnimate.cancel()
+     *  Method for canceling animations
+     */
+    exports.cancel = function(animation) {
+        if (!animation) {
+            return;
+        }
+        animation.cancel();
     };
 
     /**
