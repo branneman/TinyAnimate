@@ -54,6 +54,8 @@ define(['TinyAnimate'], function(TinyAnimate) {
     - `duration` (int) — Duration in milliseconds
     - `easing` (string | function) — Optional: A string when the easing function is available in `TinyAnimate.easings`, or a function with the signature: `function(t, b, c, d) {...}`
     - `done` (function) — Optional: To be executed when the animation has completed.
+3. `TinyAnimate.cancel(animation)`
+    - `animation` (object) - Animation object returned from `animate` or `animateCSS`.
 
 ### Easings
 All the easings found at [easings.net](http://easings.net/) are supported. I suggest you strip out all the easings you
