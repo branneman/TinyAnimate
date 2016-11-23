@@ -1,6 +1,6 @@
 {
   "name": "TinyAnimate",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "Animation microlib. Vanilla JavaScript. Uses `requestAnimationFrame()` if available, falls back to `setTimeout()`.",
   "directories": {
     "test": "test"
